@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.akashic_au.tinnituneout",
+      "sha256_cert_fingerprints": [
+        "22:DD:54:70:AE:E6:F2:27:ED:C3:EB:2B:56:EC:8C:19:60:FC:EE:84:E9:9B:4F:45:85:17:9B:C9:2B:B2:54:67"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.akashic_au.tinnituneout",
+      "sha256_cert_fingerprints": [
+        "CB:A0:AA:98:8E:50:D2:96:1D:EF:A6:27:FB:D4:14:C2:08:4D:D6:69:31:34:D8:AD:18:EA:E3:AF:B5:95:31:84"
+      ]
+    }
+  }
+]
