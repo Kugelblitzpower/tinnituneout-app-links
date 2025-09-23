@@ -1,0 +1,22 @@
+<script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyABqkCqunuzdyAFAidcWcRiKLs2NSNEXGw",
+    authDomain: "tinnituneout-app.firebaseapp.com",
+    // other config
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  // Handle email link
+  if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
+    const email = window.localStorage.getItem('emailForSignIn');
+    firebase.auth().signInWithEmailLink(email, window.location.href)
+      .then(result => {
+        // success
+      })
+      .catch(error => {
+        // handle error
+      });
+  }
+</script>
