@@ -20,3 +20,55 @@
       });
   }
 </script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Firebase Auth Handler</title>
+  <!-- Firebase SDKs and other scripts -->
+</head>
+<body>
+  <h1>Welcome to Tinnituneout Auth</h1>
+
+  <script>
+    window.addEventListener('load', () => {
+      // Your routing logic goes here
+      const hash = window.location.hash;
+      if (hash.startsWith('#/__/auth/action')) {
+        const queryString = hash.split('?')[1];
+        const params = new URLSearchParams(queryString);
+        const mode = params.get('mode');
+        const oobCode = params.get('oobCode');
+
+        // Handle Firebase Auth actions
+        switch (mode) {
+          case 'signIn':
+            handleMagicLink(oobCode);
+            break;
+          case 'verifyEmail':
+            handleEmailVerification(oobCode);
+            break;
+          case 'resetPassword':
+            showResetForm(oobCode);
+            break;
+        }
+      }
+    });
+
+    function handleMagicLink(oobCode) {
+      const email = window.localStorage.getItem('emailForSignIn');
+      if (!email) {
+        alert('Missing email for sign-in');
+        return;
+      }
+
+      firebase.auth().signInWithEmailLink(email, window.location.href)
+        .then(result => {
+          console.log('Signed in:', result.user.email);
+        })
+        .catch(error => {
+          console.error('Sign-in failed:', error);
+        });
+    }
+  </script>
+</body>
+</html>
